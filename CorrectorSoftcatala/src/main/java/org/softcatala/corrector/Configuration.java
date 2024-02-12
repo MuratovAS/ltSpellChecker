@@ -32,15 +32,14 @@ public class Configuration {
     private static final String languageDefault = "system";
     private static final String motherTongueDefault = "";
     private static final Set<String> preferredVariantsDefault = new HashSet<>();
-
-    private static volatile Configuration instance = null;
     private static final String PREF_SERVER = "corrector.softcatala.server";
     private static final String PREF_LANGUAGE = "corrector.softcatala.language";
     private static final String PREF_MOTHER_TONGUE = "corrector.softcatala.mother_tongue";
     private static final String PREF_PREFERRED_VARIANTS = "corrector.softcatala.preferred_variants";
+    public static SpellCheckerSettingsActivity SettingsActivity;
+    private static volatile Configuration instance = null;
     private static int HttpConnections = 0;
     private static Date LastConnection = null;
-    public static SpellCheckerSettingsActivity SettingsActivity;
 
     public static synchronized Configuration getInstance() {
         if (instance == null) {
@@ -50,8 +49,7 @@ public class Configuration {
         return instance;
     }
 
-    public String getServer()
-    {
+    public String getServer() {
         if (SettingsActivity == null) {
             return languagetoolServerDefault;
         }
@@ -59,8 +57,7 @@ public class Configuration {
         return sharedPreferences.getString(PREF_SERVER, languagetoolServerDefault);
     }
 
-    public String setServer(String server)
-    {
+    public String setServer(String server) {
         if (server.isEmpty()) {
             server = languagetoolServerDefault;
         }
@@ -86,8 +83,7 @@ public class Configuration {
         LastConnection = date;
     }
 
-    public String getLanguage()
-    {
+    public String getLanguage() {
         if (SettingsActivity == null) {
             return languageDefault;
         }
@@ -96,8 +92,12 @@ public class Configuration {
         return sharedPreferences.getString(PREF_LANGUAGE, languageDefault);
     }
 
-    public String getMotherTongue()
-    {
+    public void setLanguage(String language) {
+        SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(SettingsActivity);
+        sharedPreference.edit().putString(PREF_LANGUAGE, language).apply();
+    }
+
+    public String getMotherTongue() {
         if (SettingsActivity == null) {
             return motherTongueDefault;
         }
@@ -106,24 +106,18 @@ public class Configuration {
         return sharedPreferences.getString(PREF_MOTHER_TONGUE, motherTongueDefault);
     }
 
-    public Set<String> getPreferredVariants()
-    {
+    public void setMotherTongue(String motherTongue) {
+        SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(SettingsActivity);
+        sharedPreference.edit().putString(PREF_MOTHER_TONGUE, motherTongue).apply();
+    }
+
+    public Set<String> getPreferredVariants() {
         if (SettingsActivity == null) {
             return preferredVariantsDefault;
         }
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity);
         return sharedPreferences.getStringSet(PREF_PREFERRED_VARIANTS, preferredVariantsDefault);
-    }
-
-    public void setLanguage(String language) {
-        SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(SettingsActivity);
-        sharedPreference.edit().putString(PREF_LANGUAGE, language).apply();
-    }
-
-    public void setMotherTongue(String motherTongue) {
-        SharedPreferences sharedPreference = PreferenceManager.getDefaultSharedPreferences(SettingsActivity);
-        sharedPreference.edit().putString(PREF_MOTHER_TONGUE, motherTongue).apply();
     }
 
     public void setPreferredVariants(Set<String> preferredVariants) {

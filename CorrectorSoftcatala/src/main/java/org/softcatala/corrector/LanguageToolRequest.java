@@ -19,19 +19,18 @@
 
 package org.softcatala.corrector;
 
+import android.util.Log;
+
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.io.BufferedReader;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.Set;
-
-import android.util.Log;
 
 public class LanguageToolRequest {
 
@@ -40,6 +39,7 @@ public class LanguageToolRequest {
     private static final String m_sessionId = GetSessionID();
 
     private final LanguageToolParsing languageToolParsing = new LanguageToolParsing();
+    private final String system_language;
     String[][] mAndroidToLTLangMap = new String[][]{
             {"ar", "ar"},
             {"ast", "ast-ES"},
@@ -74,7 +74,6 @@ public class LanguageToolRequest {
             {"ta", "ta-IN"},
             {"uk", "uk-UA"},
     };
-    private final String system_language;
 
     public LanguageToolRequest(String language) {
         system_language = language;

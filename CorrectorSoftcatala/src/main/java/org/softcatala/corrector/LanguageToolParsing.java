@@ -19,12 +19,12 @@
 
 package org.softcatala.corrector;
 
-import java.util.ArrayList;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.util.Log;
+import java.util.ArrayList;
 
 public class LanguageToolParsing {
 

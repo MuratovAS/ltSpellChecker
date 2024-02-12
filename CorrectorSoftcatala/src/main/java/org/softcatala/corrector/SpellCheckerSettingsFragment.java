@@ -20,13 +20,12 @@
 package org.softcatala.corrector;
 
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.EditTextPreference;
-import android.preference.PreferenceFragment;
-import android.util.Log;
-
 import android.preference.ListPreference;
 import android.preference.MultiSelectListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.util.Log;
 
 import java.util.Date;
 import java.util.Set;

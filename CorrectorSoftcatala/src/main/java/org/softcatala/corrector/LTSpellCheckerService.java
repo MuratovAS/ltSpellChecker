@@ -45,11 +45,11 @@ public class LTSpellCheckerService extends SpellCheckerService {
 
     private static class AndroidSpellCheckerSession extends Session {
 
-        private String mLocale;
         private static final String TAG = AndroidSpellCheckerSession.class
                 .getSimpleName();
-        private HashSet<String> mReportedErrors;
         final int MAX_REPORTED_ERRORS_STORED = 100;
+        private String mLocale;
+        private HashSet<String> mReportedErrors;
 
         public static int[] convertIntegers(ArrayList<Integer> integers) {
             int[] ret = new int[integers.size()];
@@ -145,7 +145,7 @@ public class LTSpellCheckerService extends SpellCheckerService {
         }
 
         private void getSuggestionsFromLT(TextInfo ti, ArrayList<SuggestionsInfo> sis,
-                                    ArrayList<Integer> offsets, ArrayList<Integer> lengths) {
+                                          ArrayList<Integer> offsets, ArrayList<Integer> lengths) {
 
             final String input = ti.getText();
 
@@ -176,21 +176,20 @@ public class LTSpellCheckerService extends SpellCheckerService {
          * Let's imagine that you have the text:  Hi ha "cotxes" blaus
          * In the first request we get the text 'Hi ha "cotxes'. We return the error CA_UNPAIRED_BRACKETS
          * because the sentence is not completed and the ending commas are not introduced yet.
-         *
+         * <p>
          * In the second request we get the text 'Hi ha "cotxes" blaus al carrer', now with both commas
          * there is no longer an error. However, since we sent the error as answer to the first request
          * the error marker will be there since they are not removed.
-         *
+         * <p>
          * This function asks the spell checker to remove previously marked errors (all of them for the given string)
          * since we spell check the string every time.
-         *
+         * <p>
          * Every time that we get a request we do not know how this related to the full sentence or
          * if is it a sentence previously given. As result, we may ask to remove previously marked errors,
          * but this is fine since we evaluate the sentence every time. We only clean the list of reported
          * errors once per session because we do not when a sentence with a previously marked error
          * will be requested again and if the words /marks  that we asked to cleanup previously correspond
          * to that fragment of text.
-         *
          */
         private void removePreviouslyMarkedErrors(TextInfo ti, ArrayList<SuggestionsInfo> sis,
                                                   ArrayList<Integer> offsets, ArrayList<Integer> lengths) {
