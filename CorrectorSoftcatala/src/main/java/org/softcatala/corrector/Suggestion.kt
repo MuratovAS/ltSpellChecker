@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 Jordi Mas i Hernàndez <jmas@softcatala.org>
+ * Copyright (C) 2015 Jordi Mas i Hernàndez <jmas@softcatala.org>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,24 +16,10 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+package org.softcatala.corrector
 
-package org.softcatala.corrector;
-
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-/**
- * Spell checker preference screen.
- */
-public class SpellCheckerSettingsActivity extends AppCompatActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(android.R.id.content, new SpellCheckerSettingsFragment())
-                    .commit();
-        }
-    }
+class Suggestion {
+    var Position = 0
+    lateinit var Text: Array<String>
+    var Length = 0
 }
