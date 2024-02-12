@@ -3,18 +3,21 @@ plugins {
 }
 
 gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xlint:deprecation"
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.compilerArgs << "-Xlint:deprecation"
+        }
     }
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
+    namespace 'org.softcatala.corrector'
 
     defaultConfig {
         applicationId "org.softcatala.corrector"
-        minSdk 19
-        targetSdk 33
+        minSdk 25
+        targetSdk 34
         versionCode 11
         versionName "1.0.10"
     }
@@ -26,25 +29,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    signingConfigs {
-        buildTypes {
-            debug {
-                buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
-            }
-            release {
-                buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + getDateAsMillis() + "L)"
-            }
+    buildTypes {
+        debug {
+            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + System.currentTimeMillis() + "L)"
         }
+        release {
+            buildConfigField "java.util.Date", "buildTime", "new java.util.Date(" + System.currentTimeMillis() + "L)"
+        }
+    }
+    buildFeatures {
+        buildConfig true
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'androidx.preference:preference:1.1.1' // latest 1.2.0 gives 'Duplicate class androidx.lifecycle.ViewModelLazy found in modules lifecycle-viewmodel-2.5.1-runtime'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.preference:preference:1.2.1")
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }
