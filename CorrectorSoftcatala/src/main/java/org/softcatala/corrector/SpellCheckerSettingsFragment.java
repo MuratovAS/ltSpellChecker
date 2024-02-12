@@ -19,15 +19,17 @@
 
 package org.softcatala.corrector;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.MultiSelectListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.util.Log;
+
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.MultiSelectListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -35,41 +37,36 @@ import java.util.Set;
  * Preference screen.
  */
 
-public class SpellCheckerSettingsFragment extends PreferenceFragment {
-
-    private static final String TAG = SpellCheckerSettingsFragment.class
-            .getSimpleName();
+public class SpellCheckerSettingsFragment extends
+        PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
-    public void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.spell_checker_settings, rootKey);
 
-        Log.d(TAG, "onCreate");
-
-        addPreferencesFromResource(R.xml.spell_checker_settings);
-
-        setHttpConnections();
-        setVersion();
         setServer();
+        setVersion();
         setLanguageChangeListener();
         setMotherTongueChangeListener();
         setPreferredVariantsChangeListener();
     }
 
     private void setServer() {
-        EditTextPreference serverField = ((EditTextPreference) findPreference("server"));
+        EditTextPreference serverField = findPreference("server");
+        assert serverField != null;
         serverField.setSummary(Configuration.getInstance().getServer());
 
         serverField.setOnPreferenceChangeListener((preference, newValue) -> {
             String newServer = newValue.toString();
             newServer = Configuration.getInstance().setServer(newServer);
-            ((EditTextPreference) preference).setSummary(newServer);
+            serverField.setSummary(newServer);
             return true;
         });
     }
 
     private void setLanguageChangeListener() {
-        ListPreference languageField = ((ListPreference) findPreference("language"));
+        ListPreference languageField = findPreference("language");
+        assert languageField != null;
         languageField.setOnPreferenceChangeListener((preference, newValue) -> {
             Configuration.getInstance().setLanguage(newValue.toString());
             return true;
@@ -77,7 +74,8 @@ public class SpellCheckerSettingsFragment extends PreferenceFragment {
     }
 
     private void setMotherTongueChangeListener() {
-        ListPreference motherTongueField = ((ListPreference) findPreference("mother_tongue"));
+        ListPreference motherTongueField = findPreference("mother_tongue");
+        assert motherTongueField != null;
         motherTongueField.setOnPreferenceChangeListener((preference, newValue) -> {
             Configuration.getInstance().setMotherTongue(newValue.toString());
             return true;
@@ -86,7 +84,8 @@ public class SpellCheckerSettingsFragment extends PreferenceFragment {
 
     @SuppressWarnings("unchecked")
     private void setPreferredVariantsChangeListener() {
-        MultiSelectListPreference preferredVariantsField = ((MultiSelectListPreference) findPreference("preferred_variants"));
+        MultiSelectListPreference preferredVariantsField = findPreference("preferred_variants");
+        assert preferredVariantsField != null;
         preferredVariantsField.setOnPreferenceChangeListener((preference, newValue) -> {
             Configuration.getInstance().setPreferredVariants((Set<String>) newValue);
             return true;
@@ -97,12 +96,13 @@ public class SpellCheckerSettingsFragment extends PreferenceFragment {
         Date buildDate = BuildConfig.buildTime;
         Preference version = findPreference("version");
         String v = String.format(getResources().getString(R.string.version_text), getVersion(), buildDate);
+        assert version != null;
         version.setSummary(v);
     }
 
     private String getVersion() {
         try {
-            return getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+            return requireActivity().getPackageManager().getPackageInfo(requireActivity().getPackageName(), 0).versionName;
         } catch (Exception e) {
             return null;
         }
@@ -116,6 +116,30 @@ public class SpellCheckerSettingsFragment extends PreferenceFragment {
                 lastConnection == null ? getResources().getString(R.string.connection_none)
                         : lastConnection.toString());
 
+        assert http != null;
         http.setSummary(status);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Objects.requireNonNull(
+                getPreferenceManager().getSharedPreferences()).registerOnSharedPreferenceChangeListener(this);
+        setHttpConnections();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Objects.requireNonNull(
+                getPreferenceManager().getSharedPreferences()).unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        assert key != null;
+        if (key.equals("http")) {
+            setHttpConnections();
+        }
     }
 }
