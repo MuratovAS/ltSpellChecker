@@ -7,16 +7,21 @@
     android:padding="30dp"
     tools:context=".WelcomeActivity">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         android:scrollbarStyle="insideOverlay"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -25,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewInstallTitle"
@@ -35,14 +40,14 @@
                 android:text="@string/installation_title"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/textViewWelcome"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
 
             <TextView
                 android:id="@+id/textViewSteps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Install"
-                app:layout_constraintTop_toBottomOf="@+id/textViewInstallTitle"/>
+                android:text="@string/install"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInstallTitle" />
 
             <TextView
                 android:id="@+id/textViewLimitationsTitle"
@@ -51,13 +56,13 @@
                 android:text="@string/limitations_title"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSteps"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewSteps" />
 
             <TextView
                 android:id="@+id/textViewLimitations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/textViewLimitationsTitle"/>
+                app:layout_constraintTop_toBottomOf="@+id/textViewLimitationsTitle" />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
@@ -72,14 +77,8 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                  />
-
+                    app:layout_constraintRight_toRightOf="parent" />
             </RelativeLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

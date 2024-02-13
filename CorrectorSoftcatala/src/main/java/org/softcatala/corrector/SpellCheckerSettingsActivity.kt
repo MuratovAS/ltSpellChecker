@@ -18,31 +18,25 @@
  */
 package org.softcatala.corrector
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceActivity.EXTRA_NO_HEADERS
-import android.preference.PreferenceActivity.EXTRA_SHOW_FRAGMENT
 import androidx.appcompat.app.AppCompatActivity
-
 
 /**
  * Spell checker preference screen.
  */
 open class SpellCheckerSettingsActivity : AppCompatActivity() {
-    override fun getIntent(): Intent? {
-        val modIntent = Intent(super.getIntent())
+    override fun getIntent(): Intent {
+        val intent = Intent(super.getIntent())
         Configuration.SettingsActivity = this
-        modIntent.putExtra(EXTRA_SHOW_FRAGMENT, SpellCheckerSettingsFragment::class.java.name)
-        modIntent.putExtra(EXTRA_NO_HEADERS, true)
-        return modIntent
+        return intent
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.content, SpellCheckerSettingsFragment())
+                .replace(android.R.id.content, SpellCheckerSettingsFragment())
                 .commit()
         }
     }

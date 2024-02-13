@@ -26,7 +26,7 @@ import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import org.softcatala.corrector.Configuration.getInstance
+import org.softcatala.corrector.Configuration
 
 /**
  * Preference screen.
@@ -43,11 +43,11 @@ class SpellCheckerSettingsFragment : PreferenceFragmentCompat(), OnSharedPrefere
 
     private fun setServer() {
         val serverField = findPreference<EditTextPreference>("server")!!
-        serverField.summary = getInstance()!!.getServer()
+        serverField.summary = Configuration.getInstance()!!.getServer()
         serverField.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { preference: Preference?, newValue: Any ->
                 var newServer: String? = newValue.toString()
-                newServer = getInstance()!!.setServer(newServer!!)
+                newServer = Configuration.getInstance()!!.setServer(newServer!!)
                 serverField.summary = newServer
                 true
             }
@@ -57,7 +57,7 @@ class SpellCheckerSettingsFragment : PreferenceFragmentCompat(), OnSharedPrefere
         val languageField = findPreference<ListPreference>("language")!!
         languageField.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { preference: Preference?, newValue: Any ->
-                getInstance()!!
+                Configuration.getInstance()!!
                     .setLanguage(newValue.toString())
                 true
             }
@@ -67,7 +67,7 @@ class SpellCheckerSettingsFragment : PreferenceFragmentCompat(), OnSharedPrefere
         val motherTongueField = findPreference<ListPreference>("mother_tongue")!!
         motherTongueField.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { preference: Preference?, newValue: Any ->
-                getInstance()!!
+                Configuration.getInstance()!!
                     .setMotherTongue(newValue.toString())
                 true
             }
@@ -78,7 +78,7 @@ class SpellCheckerSettingsFragment : PreferenceFragmentCompat(), OnSharedPrefere
             findPreference<MultiSelectListPreference>("preferred_variants")!!
         preferredVariantsField.onPreferenceChangeListener =
             Preference.OnPreferenceChangeListener { preference: Preference?, newValue: Any? ->
-                getInstance()!!
+                Configuration.getInstance()!!
                     .setPreferredVariants(newValue as Set<String?>?)
                 true
             }
@@ -104,11 +104,11 @@ class SpellCheckerSettingsFragment : PreferenceFragmentCompat(), OnSharedPrefere
 
     private fun setHttpConnections() {
         val http = findPreference<Preference>("http")
-        val lastConnection = getInstance()!!
+        val lastConnection = Configuration.getInstance()!!
             .getLastConnection()
         val status = String.format(
             resources.getString(R.string.connections),
-            getInstance()!!.getHttpConnections(),
+            Configuration.getInstance()!!.getHttpConnections(),
             lastConnection?.toString() ?: resources.getString(R.string.connection_none)
         )
         assert(http != null)
