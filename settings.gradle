@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "LanguageToolAndroidService"
-include ':CorrectorSoftcatala'
+include ':app'
