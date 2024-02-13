@@ -46,7 +46,7 @@
                 android:id="@+id/textViewSteps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/install"
+                android:text="@string/install_steps"
                 app:layout_constraintTop_toBottomOf="@+id/textViewInstallTitle" />
 
             <TextView
@@ -62,7 +62,8 @@
                 android:id="@+id/textViewLimitations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/textViewLimitationsTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewLimitationsTitle"
+                android:text="@string/app_limitations" />
 
             <RelativeLayout
                 android:id="@+id/relativeLayout"
@@ -74,10 +75,22 @@
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonSettings"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/button_close" />
+
+                <Button
+                    android:id="@+id/buttonSettings"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/button_settings" />
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
