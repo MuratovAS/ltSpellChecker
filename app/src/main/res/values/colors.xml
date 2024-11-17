@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#BB86FC</color> <!-- Example: Purple -->
+    <color name="primaryColorDark">#3700B3</color> <!-- Darker shade -->
+    <color name="secondaryColor">#03DAC6</color> <!-- Example: Teal -->
+    <color name="white">#000000</color>
+</resources>
