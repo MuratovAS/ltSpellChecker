@@ -19,7 +19,7 @@
  */
 
 -->
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources>
     <string name="app_name">LanguageTool proofreader</string>
     <string name="spellchecker_name">LanguageTool proofreader</string>
     <string name="subtype_generic" translatable="false">%s</string>
