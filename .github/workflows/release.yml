@@ -41,4 +41,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.date.outputs.yymmdd }}
-        files: ${{ github.repository }}-${{ github.ref }}.apk
+        files: ${{ github.event.repository.name }}-${GITHUB_REF_NAME}.apk
