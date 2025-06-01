@@ -34,11 +34,8 @@ jobs:
       env:
         BUILD_TOOLS_VERSION: "34.0.0"
 
-    - name: Rename APK
-      run: mv ${{ steps.sign_app.outputs.signedReleaseFile }} ${{ github.event.repository.name }}-${GITHUB_REF_NAME}.apk
-
     - name: Publishing Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ steps.date.outputs.yymmdd }}
-        files: ${{ github.event.repository.name }}-${GITHUB_REF_NAME}.apk
+        files: ${{ steps.sign_app.outputs.signedReleaseFile }}
