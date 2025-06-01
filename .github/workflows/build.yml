@@ -14,9 +14,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 21
-
     - name: Build with Gradle
-      run: bash gradlew assembleDebug lint
+      run: ./gradlew build
 
     - uses: actions/upload-artifact@v4
       with:
