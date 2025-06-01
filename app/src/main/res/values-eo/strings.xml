@@ -12,5 +12,4 @@
   <string name="connections" formatted="false">%d (lasta %s)</string>
   <!--Used on the string (last %s) when there is connection yet-->
   <string name="connection_none">neniu</string>
-  <string name="button_close">Fermi</string>
 </resources>

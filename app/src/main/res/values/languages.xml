@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- TODO: Add a way to add the first two items dynamically -->
+    <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].name' | uniq -->
     <string-array name="language_names_special">
         <item>Use the system-language</item>
         <item>Guess the language automatically</item>
-        <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].name' | uniq -->
         <item>Arabic</item>
         <item>Asturian</item>
         <item>Belarusian</item>
@@ -35,6 +35,7 @@
         <item>Japanese</item>
         <item>Khmer</item>
         <item>Norwegian (Bokmål)</item>
+        <item>Norwegian</item>
         <item>Persian</item>
         <item>Polish</item>
         <item>Portuguese</item>
@@ -55,10 +56,10 @@
         <item>Ukrainian</item>
     </string-array>
     <!-- TODO: Add a way to add the first two items dynamically -->
+    <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].longCode' | uniq -->
     <string-array name="language_codes_special">
         <item>system</item>
         <item>auto</item>
-        <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].longCode' | uniq -->
         <item>ar</item>
         <item>ast-ES</item>
         <item>be-BY</item>
@@ -109,8 +110,8 @@
         <item>ta-IN</item>
         <item>uk-UA</item>
     </string-array>
+    <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].name' | uniq -->
     <string-array name="language_names">
-        <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].name' | uniq -->
         <item>Arabic</item>
         <item>Asturian</item>
         <item>Belarusian</item>
@@ -141,6 +142,7 @@
         <item>Japanese</item>
         <item>Khmer</item>
         <item>Norwegian (Bokmål)</item>
+        <item>Norwegian</item>
         <item>Persian</item>
         <item>Polish</item>
         <item>Portuguese</item>
@@ -160,8 +162,8 @@
         <item>Tamil</item>
         <item>Ukrainian</item>
     </string-array>
+    <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].longCode' | uniq -->
     <string-array name="language_codes">
-        <!-- curl 'https://api.languagetoolplus.com/v2/languages' | jq '.[].longCode' | uniq -->
         <item>ar</item>
         <item>ast-ES</item>
         <item>be-BY</item>

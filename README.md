@@ -1,17 +1,21 @@
---- Introduction
+# ltSpellChecker
 
-This a spell-checking service for Android 8.0 or higher that uses LanguageTool as the backend.
+LanguageTool is a tool for checking grammar, spelling, and style in texts across multiple languages. It has an open-source server implementation, ensuring data privacy.
 
--- References
+This repository's application provides an Android spell checker built with the latest SDK, improving the quality of text composed on mobile devices.
 
-Android:
+## Features:
+- Utilizes the latest Android 12 `SDK`
+- Highlights errors in text with color coding
+- Resolves issues related to app unloading from memory on newer platforms
+- Offers customizable server request settings
 
-* https://android.googlesource.com/platform/packages/inputmethods/LatinIME/+/master
-* https://github.com/android/platform_frameworks_base/tree/master/core/java/android/view/textservice
-* https://github.com/android/platform_packages_apps_settings/blob/master/src/com/android/settings/inputmethod/SpellCheckersSettings.java
+## Usage Recommendations:
+- Select your preferred languages in the app settings
+- Turn off battery optimization for the app
+- Allow unrestricted data usage in data-saving mode
 
-Implementations:
-
-* https://github.com/voikko/droidvoikko/tree/master/src/org/puimula/droidvoikko
-* https://github.com/mweimerskirch/AndroidHunspellService
-* https://github.com/lubekgc/AnySoftKeyboard-AnySoftKeyboard/blob/master/src/main/java/com/anysoftkeyboard/spellcheck/AnySpellCheckerService.java
+## Credits:
+- https://github.com/languagetool-org/languagetool
+- https://github.com/althafvly/LanguageToolAndroidService
+- https://github.com/hashworks/LanguageToolAndroidService

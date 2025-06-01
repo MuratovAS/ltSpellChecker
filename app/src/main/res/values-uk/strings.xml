@@ -4,7 +4,7 @@
   <string name="spellchecker_name">Коректор LanguageTool</string>
   <string name="sample_settings">Налаштування</string>
   <string name="version">Версія</string>
-  <string name="server">Cервера</string>
+  <string name="server">Cервер</string>
   <string name="requests">Запити до сервера коректора</string>
   <!--%s is the version number and %s the date (e.g Sun Feb 28)-->
   <string name="version_text" formatted="false">%s (побудовано на %s)</string>
@@ -12,5 +12,4 @@
   <string name="connections" formatted="false">%d (останній %s)</string>
   <!--Used on the string (last %s) when there is connection yet-->
   <string name="connection_none">відсутній</string>
-  <string name="button_close">Закрити</string>
 </resources>

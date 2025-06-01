@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    tools:context=".WelcomeActivity">
+    tools:context=".ui.WelcomeActivity">
 
     <!-- Scrollable Content -->
     <ScrollView
@@ -14,10 +14,10 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:scrollbars="vertical"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout3"
@@ -30,10 +30,10 @@
                 android:id="@+id/textViewWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/welcome"
                 android:textAppearance="?attr/textAppearanceHeadline6"
-                android:textStyle="bold"
-                android:layout_gravity="center_horizontal" />
+                android:textStyle="bold" />
 
             <!-- Installation Title -->
             <TextView
@@ -75,22 +75,14 @@
                 android:text="@string/app_limitations"
                 android:textAppearance="?attr/textAppearanceBody2" />
 
-            <!-- Buttons -->
+            <!-- Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
-                android:text="@string/button_settings"
-                android:layout_gravity="center_horizontal" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/button_close"
-                android:layout_gravity="center_horizontal" />
+                android:text="@string/button_settings" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

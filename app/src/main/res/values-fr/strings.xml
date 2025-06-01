@@ -12,5 +12,4 @@
   <string name="connections" formatted="false">%d (dernière %s)</string>
   <!--Used on the string (last %s) when there is connection yet-->
   <string name="connection_none">aucune</string>
-  <string name="button_close">Fermer</string>
 </resources>

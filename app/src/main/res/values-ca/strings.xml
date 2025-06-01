@@ -19,5 +19,4 @@
        1. Alguns fabricants com Samsung suprimeixen les preferències que permeten seleccionar correctors ortogràfics de tercers com aquest.\n
        2. Alguns teclats (p .ex Yandex keyboard) ignoren la configuració de correctors ortogràfics de tercers.\n
 \nDegut a la fragmentació en les capes de UI i API a Android, bastants combinacions de dispositius no funcionen amb aquesta aplicació.</string>
-  <string name="button_close">Tanca</string>
 </resources>

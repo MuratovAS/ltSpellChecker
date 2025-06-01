@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 /*
  * Copyright (C) 2015 Jordi Mas i Hernàndez <jmas@softcatala.org>
  *
@@ -20,64 +19,68 @@
  */
 -->
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/sample_settings">
 
-    <Preference
-        android:selectable="false"
-        android:enabled="true"
-        android:key="http"
-        android:title="@string/requests"
-        android:summary="" />
+    <PreferenceCategory app:allowDividerAbove="true">
 
-    <Preference
-        android:selectable="false"
-        android:enabled="true"
-        android:key="version"
-        android:title="@string/version"
-        android:summary="" />
+        <EditTextPreference
+            android:enabled="true"
+            android:inputType="textUri"
+            android:key="server"
+            android:selectable="true"
+            android:title="@string/server"
+            app:allowDividerAbove="true" />
 
-    <EditTextPreference
-        android:selectable="true"
-        android:enabled="true"
-        android:inputType="textUri"
-        android:key="server"
-        android:title="@string/server"/>
+        <ListPreference
+            android:defaultValue="auto"
+            android:enabled="true"
+            android:entries="@array/language_names_special"
+            android:entryValues="@array/language_codes_special"
+            android:key="language"
+            android:selectable="true"
+            android:summary="@string/language_summary"
+            android:title="@string/language" />
 
-    <ListPreference
-        android:selectable="true"
-        android:enabled="true"
-        android:key="language"
-        android:title="@string/language"
-        android:summary="@string/language_summary"
-        android:defaultValue="system"
-        android:entries="@array/language_names_special"
-        android:entryValues="@array/language_codes_special"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+        <ListPreference
+            android:defaultValue="none"
+            android:enabled="true"
+            android:entries="@array/language_names"
+            android:entryValues="@array/language_codes"
+            android:key="mother_tongue"
+            android:selectable="true"
+            android:summary="@string/mother_tongue_summary"
+            android:title="@string/mother_tongue" />
 
-    <ListPreference
-        android:selectable="true"
-        android:enabled="true"
-        android:key="mother_tongue"
-        android:title="@string/mother_tongue"
-        android:summary="@string/mother_tongue_summary"
-        android:defaultValue="none"
-        android:entries="@array/language_names"
-        android:entryValues="@array/language_codes"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty_array"
+            android:enabled="true"
+            android:entries="@array/language_names"
+            android:entryValues="@array/language_codes"
+            android:key="preferred_variants"
+            android:selectable="true"
+            android:summary="@string/preferred_variants_summary"
+            android:title="@string/preferred_variants" />
 
-    <MultiSelectListPreference
-        android:selectable="true"
-        android:enabled="true"
-        android:key="preferred_variants"
-        android:title="@string/preferred_variants"
-        android:summary="@string/preferred_variants_summary"
-        android:entries="@array/language_names"
-        android:entryValues="@array/language_codes"
-        android:defaultValue="@array/empty_array"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+    </PreferenceCategory>
+
+    <PreferenceCategory>
+
+        <Preference
+            android:enabled="true"
+            android:key="http"
+            android:selectable="false"
+            android:summary=""
+            android:title="@string/requests" />
+
+        <Preference
+            android:enabled="true"
+            android:key="version"
+            android:selectable="false"
+            android:summary=""
+            android:title="@string/version" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
