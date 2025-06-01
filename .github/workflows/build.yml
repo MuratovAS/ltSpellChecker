@@ -37,3 +37,4 @@ jobs:
         title: "${{ env.GITHUB_SHA }}"
         files: |
           app/build/outputs/apk/debug/app-debug.apk
+          
